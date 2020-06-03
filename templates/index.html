@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap-grid.min.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap-reboot.min.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/app.css') }}" />
+</head>
+<body>
+<div id="header">
+    <div class="container">
+        <div class="row justify-content-between text-center">
+            <div class="col-lg-2 logo">VK</div>
+            <div class="col-lg-4"><input type="text" label="search" placeholder="Поиск" class="search"></div>
+            <div class="col-lg-4 login">
+            {% if data.user %}
+                <span>{{ data.user.name }}</span>
+            {% else %}
+                <a href="{{ data.url.oauth_url }}authorize?client_id={{ data.url.client_id }}&redirect_uri={{ data.url.redirect_uri }}&display=page&response_type=code&scope=friends&v={{ data.url.v }}">Войти</a>
+            {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+<div id="content">
+    <div class="container">
+    {% if data.user %}
+        <div id="friends">
+        {% for friend in data.user.friends %}
+            <div class="friend">
+                <img src="{{ friend.photo_50 }}" alt="">
+                {% if friend.online %}
+                    <span class="online"></span>
+                {% endif %}
+                <span class="name">{{ friend.first_name + ' ' + friend.last_name }}</span>
+            </div>
+        {% endfor %}
+        </div>
+    {% else %}
+        <div class="text-center">
+            <a href="{{ data.url.oauth_url }}authorize?client_id={{ data.url.client_id }}&redirect_uri={{ data.url.redirect_uri }}&display=page&response_type=code&scope=friends&v={{ data.url.v }}" id="oauth">Авторизоваться</a>
+        </div>
+    {% endif %}
+    </div>
+</div>
+</body>
+</html>

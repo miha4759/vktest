@@ -1,0 +1,68 @@
+body {
+    background: #edeef0;
+}
+
+#oauth {
+    display: inline-block;
+    color: #FFF;
+    background: #4a76a8;
+    padding: 10px 20px;
+    margin-top: 30px;
+    border-radius: 22px;
+}
+
+#header {
+    background: #4a76a8;
+    padding: 7px 0;
+}
+
+#header .logo {
+    color: #FFF;
+}
+
+#header .search {
+    border: none;
+    border-radius: 20px;
+    background: #224b7a;
+    color: #d9e2ec;
+    padding: 3px 20px;
+    outline: none;
+}
+
+#header .login span {
+    color: #ffffff;
+}
+
+#header .login a {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+#friends {
+    padding: 40px 0;
+}
+
+#friends .friend {
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.friend img {
+    border-radius: 50%;
+}
+
+.friend .name {
+    color: #2a5885;
+}
+
+.friend .online {
+    display: inline-block;
+    background: #8ac176;
+    border: 3px solid #edeef0;
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    left: 3.5%;
+    top: 70%;
+    border-radius: 50%;
+}
